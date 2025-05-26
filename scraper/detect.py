@@ -30,6 +30,14 @@ class ProductCardDetector:
         self.soup : BeautifulSoup = soup
 
     def get_structure_signature(self, tag : Tag) -> Tuple[str, ...]:
+        '''
+        Gets the html structure of the given tag by
+        extracting its direct children names.
+        Args:
+        tag : bs4 Tag object
+        Returns:
+        A tuple of strings representing the structures signature
+        '''
         # Holds the names of direct child elements of the tag
         tags = []
         for child in tag.find_all(recursive=False):
@@ -39,6 +47,13 @@ class ProductCardDetector:
         return tuple(tags)
 
     def get_class_signature(self, tag : Tag) -> Tuple[str, ...]:
+        '''
+        Gets the class signature of the given tag.
+        Args:
+            tag : bs4 Tag object
+        Returns:
+            A tuple of class names sorted alphabetically.
+        '''
         class_attr : Union[str, List[str], None] = tag.get("class")
         
         # The case where it may be None
@@ -55,7 +70,7 @@ class ProductCardDetector:
         return tuple(sorted(classes))
     
     def _visible(self, container : Tag) -> bool:
-        ''' Gets a container and checks if its visibility.
+        ''' Gets a container and checks its visibility.
         Args:
             - container: The container to check.
         Returns:
@@ -89,8 +104,10 @@ class ProductCardDetector:
     def find_mostcommon_signiture(
             self
             ) -> Tuple[List[Tuple[str, ...]], List[Tuple[str, ...]]]:
-        ''' Finds the top 3 most common structure and class signatures
-        in the grid containers.
+        ''' 
+        Finds the top 3 most common structure and class signatures
+        in the grid containers using the soup object passed to the
+        class.
         
         Returns:
             - most_common_structures: List of tuples containing the most common structure signatures
@@ -124,15 +141,16 @@ class ProductCardDetector:
 
     def is_product_card(
             self, tag : Tag,
-            most_common_structure,
-            most_common_class
+            most_common_structures,
+            most_common_classes
             ) -> bool:
         '''Gets the structure and class signatures of the tag
         and checks if they match the most common signatures.
         Also checks if the tag has a price, image, and title.
+        if it doesnt have these 3, then it is not a product card.
         Args:
-        most_common_structure: The most common structure signatures
-        most_common_class: The most common class signatures
+        most_common_structures: The most common structure signatures
+        most_common_classes: The most common class signatures
         Returns:
         True if the tag is a product card, False otherwise.'''
         
@@ -143,8 +161,8 @@ class ProductCardDetector:
         tag_class = self.get_class_signature(tag)
 
         # Signature matching
-        tag_match : bool = tag_structure in most_common_structure
-        class_match : bool = tag_class in most_common_class
+        tag_match : bool = tag_structure in most_common_structures
+        class_match : bool = tag_class in most_common_classes
 
         has_price = bool(tag.find(string=lambda text: '$' in str(text)))
         has_image = bool(tag.find('img'))
@@ -156,6 +174,15 @@ class ProductCardDetector:
         return (tag_match or class_match) and is_product
     
     def get_all_product_cards(self) -> List[Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]] ]]:
+        '''
+        This method acts as a facade for the users of this class.
+        it hides the complexity of finding the product cards.
+        It guarantees that the products found, dont have missing
+        data by applying the extract data and extract data fallback
+        logic form parse.
+        Returns:
+            A list of dictionaries containing the product cards.
+        '''
 
         product_cards : List[Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]] ]] = []
         seen_asins = set()
@@ -167,9 +194,9 @@ class ProductCardDetector:
             )
         )
         
-        most_common_structure, most_common_class = self.find_mostcommon_signiture()
+        most_common_structures, most_common_classes = self.find_mostcommon_signiture()
 
-        if not most_common_structure or not most_common_class:
+        if not most_common_structures or not most_common_classes:
             return product_cards
 
         for container in grid_containers:
@@ -179,7 +206,7 @@ class ProductCardDetector:
                     if not isinstance(div, Tag):
                         continue
 
-                    if self.is_product_card(div, most_common_structure, most_common_class):
+                    if self.is_product_card(div, most_common_structures, most_common_classes):
                         data : Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]] = parse.extract_data(div)
                         
                         if data: #and data.get('link'):
