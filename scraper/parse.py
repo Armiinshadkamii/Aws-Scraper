@@ -21,12 +21,27 @@ def extract_query_keywords(url):
 
 
 def _find_price(tag : Tag) -> Optional[str]:
+    '''
+    Gets a tag object and Extracts patterns
+    like $10, $3.50, or $1,000.
+    Args:
+    tag : bs4 Tag object
+    Returns:
+    string or none
+    '''
     text = tag.get_text(strip=True)
     match = re.search(r"\$(\d+[,.]?\d*)", text)
     
     return match.group(0) if match else None
 
 def _full_image_url(img: Tag) -> Optional[str]:
+    '''
+    Constructs a full image URL from an img tag.
+    Args:
+    img : bs4 Tag object representing an image
+    Returns:
+    Full URL as a string or None if the URL is invalid.
+    '''
     img_src = img.get('src') or img.get('data-src')
 
     if img_src and isinstance(img_src, str):
@@ -44,6 +59,13 @@ def _full_image_url(img: Tag) -> Optional[str]:
         return None
 
 def _get_product_image(soup) -> Optional[str]:
+    '''
+    uses common selectors to find the product image
+    Args:
+    soup : BeautifulSoup object of the product page
+    Returns:
+    Full image URL as a string or None if not found.
+    '''
     # Try the most common selectors one by one
     for selector in ['#landingImage', '#imgBlkFront', '#main-image']:
         img = soup.select_one(selector)
@@ -57,7 +79,15 @@ def _get_product_image(soup) -> Optional[str]:
 
 
 def _standard_product_page(link: str) -> str:
-    """Converts any Amazon link to a working product page URL"""
+    """
+    Converts any Amazon link to a working product page URL
+    Args:
+        link (str): The Amazon link to standardize.
+    Returns:
+        str: A standardized product page URL.
+    If the link does not contain a valid ASIN, it returns the original link.
+    If the link is already a valid product page, it returns it unchanged.
+    """
     # Extract ASIN first
     asin = None
     patterns = [
@@ -82,12 +112,32 @@ def _standard_product_page(link: str) -> str:
 
 
 def _get_asin(std_link: str) -> Optional[str]:
-    """Extracts the ASIN from a cleaned Amazon link"""
+    """
+    Extracts the ASIN from a standard Amazon link
+    Args:
+    link : standardized Amazon link using _standard_product_page
+    Returns:
+    str: The ASIN if found, otherwise None.
+    """
     asin = std_link.split('/dp/')[-1].split('/')[0]
 
     return asin if len(asin) == 10 else None
 
-def extract_data_fallback(data: Dict[str, Union[Optional[str], bool, List[Dict[str, Optional[str]]]]], product_page: bool | str | None):
+def extract_data_fallback(
+        data: Dict[str, Union[Optional[str], bool, List[Dict[str, Optional[str]]]]],
+        product_page: bool | str | None):
+    '''
+    This is the fallback mechanism that triggers when
+    the extract data function does not find all the
+    required data for scraped products.
+    It is used to parse the product page not the search
+    results page and it looks for only the missing fields.
+    Args:
+    data : product dict
+    product page : the product page that will be parsed
+    Returns :
+    product dict with all the required data
+    '''
     time.sleep(random.uniform(3, 8))
 
     if not product_page:
@@ -136,7 +186,17 @@ def extract_data_fallback(data: Dict[str, Union[Optional[str], bool, List[Dict[s
     return data
 
 
-def extract_data(tag : Tag) -> Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]]:
+def extract_data(
+        tag : Tag
+        ) -> Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]]:
+    '''
+    this function is used to parse the products of any search resluts page.
+    It also flags the products that need fallback mechanism.
+    Args:
+    tag : bs4 Tag object that we assume has the data
+    Returns:
+    product dict
+    '''
     data = {
         'asin': None,
         'title': None,
