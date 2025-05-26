@@ -1,5 +1,5 @@
 from typing import List, Dict
-from playwright.sync_api import Page, ElementHandle, Locator
+from playwright.sync_api import Page, Locator
 from playwright.sync_api import sync_playwright
 import random
 from typing import Optional, List

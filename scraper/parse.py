@@ -181,12 +181,7 @@ def extract_data(tag : Tag) -> Dict[str, Union[bool, Optional[str], List[Dict[st
         data['price'] = price
 
     # Does the data need a fallback mechanism ?
-    for key, value in data.items():
-        if key != '_needs_fallback' and value is None:
-            data['_needs_fallback'] = True
-            break
-    # {"price": None, "_need_fallback": True, ...}
+    required_fields = ['asin', 'title', 'price', 'link', 'image']
+    data['_needs_fallback'] = any(data.get(key) is None for key in required_fields)
     
-    # required_fields = ['title', 'price', 'link', 'image']
-
     return data if data['asin'] and data['link'] else {}
