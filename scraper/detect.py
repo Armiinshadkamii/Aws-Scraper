@@ -28,6 +28,12 @@ class ProductCardDetector:
     def __init__(self, url_keywords, soup):
         self.keywords = url_keywords
         self.soup : BeautifulSoup = soup
+        self.grid_containers = self.soup.find_all(
+            class_=lambda x: bool(x) and any(
+                c in str(x).lower() 
+                for c in ['grid', 'results', 'items', 'products', 'card']
+            )
+        )
 
     def get_structure_signature(self, tag : Tag) -> Tuple[str, ...]:
         '''
@@ -113,14 +119,11 @@ class ProductCardDetector:
             - most_common_structures: List of tuples containing the most common structure signatures
             - most_common_classes: List of tuples containing the most common class signatures
         '''
-
-        grid_containers = self.soup.find_all(class_=lambda x: bool(x) and any(
-            c in str(x).lower() for c in ['grid', 'results', 'items', 'products']))
         
         structure_signatures : list[tuple] = []
         class_signatures : list[tuple] = []
 
-        for container in grid_containers:
+        for container in self.grid_containers:
             if isinstance(container, Tag):
                 for div in container.find_all("div"):
                     if not isinstance(div, Tag):
@@ -186,20 +189,13 @@ class ProductCardDetector:
 
         product_cards : List[Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]] ]] = []
         seen_asins = set()
-
-        grid_containers = self.soup.find_all(
-            class_=lambda x: bool(x) and any(
-                c in str(x).lower() 
-                for c in ['grid', 'results', 'items', 'products', 'card']
-            )
-        )
         
         most_common_structures, most_common_classes = self.find_mostcommon_signiture()
 
         if not most_common_structures or not most_common_classes:
             return product_cards
 
-        for container in grid_containers:
+        for container in self.grid_containers:
             if isinstance(container, Tag):
                 container_divs = container.find_all("div", recursive=True)
                 for div in container_divs:
