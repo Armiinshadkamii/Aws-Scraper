@@ -87,18 +87,6 @@ class ProductCardDetector:
         normalized_style = style.replace(' ', '').lower()
 
         aria_hidden = str(container.get('aria-hidden', '')).lower()
-        
-        class_attr : Union[str, List[str], None] = container.get('class')
-        classes : List[str] = []
-
-        if class_attr is None:
-            pass
-        if isinstance(class_attr, str):
-            classes = [class_attr]
-        else:
-            # Must be List[str]
-            # But python doesnt know that ! so we cast it.
-            classes = cast(List[str], class_attr)
 
         if 'display:none' in normalized_style:
             return False

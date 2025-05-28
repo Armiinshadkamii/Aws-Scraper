@@ -60,7 +60,7 @@ def _get_variant_options(page: Page, variant_type: str) -> Optional[Locator]:
     try:
         # Screenshot for debugging
         # page.screenshot(path='screenshot.png', full_page=True)
-        section = page.locator(f'//*[contains(text(), "{variant_type}:")]/ancestor::div[1]')
+        section = page.locator(f'//*[contains(text(), "{variant_type}:")]/ancestor::div[4]')
         if not section.count():
             print(f'No section found for variant type: {variant_type}')
             return None
