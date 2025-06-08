@@ -21,6 +21,47 @@ from collections import Counter
 # url = "https://www.amazon.com/Headphones-Headsets/s?k=Headphones+and+Headsets"
 
 
+def get_vars(
+    product_page : str
+) -> List[Dict[str, Optional[str]]]:
+    '''
+    Gets variants for the specific product page.
+    '''
+    variants = get_variants(
+        product_page,
+        extract_data
+    )
+
+    return variants if variants else []
+
+def get_product_variants(
+        page_url, ret=3
+        ) -> List[Dict[str, Optional[str]]]:
+    print(f'getting variants for {page_url}')
+    print()
+
+    try:
+        # B0DP3GBGCF
+        # B086PKMZ21
+        variants : List[Dict[str, str | None]] = []
+        # Retry logic
+        for i in range(ret):
+            variants = get_vars("https://www.amazon.com/dp/B086PKMZ21?tag=generic&language=en_US")
+            if variants:
+                break
+            print(f'retrying variant extraction for {page_url}...')
+            print()
+        
+        if not variants:
+            print(f'could not get any variants for {page_url}')
+            return []
+        else:
+            return variants
+        
+    except Exception as e:
+        print(f"(main) Error getting variants: {e}")
+        return []
+
 def run_scraper(
         pass_num: int,
         url: str):
@@ -35,8 +76,7 @@ def run_scraper(
     for product in products:
         try:
             if (link := product.get('link')):
-                variants: List[Dict[str, Optional[str]]] = get_variants(
-                    str(link), extract_data)
+                variants: List[Dict[str, Optional[str]]] = get_product_variants(str(link))
             else:
                 variants = []
         except Exception as e:
@@ -118,6 +158,8 @@ def generate_stats(
 
 
 def main():
+    print("Starting Amazon Scraper...")
+
     url = "https://www.amazon.com/Headphones-Headsets/s?k=Headphones+and+Headsets"
     num_passes = 3
 

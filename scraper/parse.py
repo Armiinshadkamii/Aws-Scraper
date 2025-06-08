@@ -20,7 +20,7 @@ def extract_query_keywords(url):
     return keywords.lower().split()
 
 
-def _find_price(tag : Tag) -> Optional[str]:
+def find_price(tag : Tag) -> Optional[str]:
     '''
     Gets a tag object and Extracts patterns
     like $10, $3.50, or $1,000.
@@ -170,7 +170,7 @@ def extract_data_fallback(
 
         for container in price_container:
             if isinstance(container, Tag):
-                price = _find_price(container)
+                price = find_price(container)
                 if price:
                     data['price'] = price
                     break
@@ -236,7 +236,7 @@ def extract_data(
         if img_url:
             data['image'] = img_url
     
-    price : Optional[str] = _find_price(tag)
+    price : Optional[str] = find_price(tag)
     if price:
         data['price'] = price
 

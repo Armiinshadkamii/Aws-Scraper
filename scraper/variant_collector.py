@@ -3,48 +3,48 @@ from playwright.sync_api import Page, Locator
 from playwright.sync_api import sync_playwright
 import random
 from typing import Optional, List
+from itertools import product
+from bs4 import BeautifulSoup, Tag
+
 import scraper.fetch_page as fp
+import scraper.parse as parse
 
-
-def _find_variant_section(page, variant_type):
-    """Finds the container for a variant type using text relationships"""
-    # XPath that finds elements containing the label and their parent containers
-    xpaths = [
-        f'//*[contains(translate(text(), "COLOR", "color"), "{variant_type}")]/ancestor::div[1]',
-        f'//label[contains(translate(., "COLOR", "color"), "{variant_type}")]/following-sibling::div',
-        f'//*[contains(text(), "{variant_type}:")]/../..'
-    ]
+def _get_sibling_options(
+        page : Page,
+        variant_type : str
+    ) -> Optional[Locator]:
+    """
+    Fetches a list of visible clickable variant option elements for a given variant type.
     
-    for xpath in xpaths:
-        section = page.locator(xpath)
-        if section.count() > 0:
-            return section
-    return None
+    Args:
+        page: Playwright page object.
+        variant_type: The type of variant to look for ("Color", "Size", "Style").
+    
+    Returns:
+        Locator object representing the variant options, or None.
+    """
+    try:
+        label_container = page.locator(f'//*[contains(text(), "{variant_type}:")]')
+        if not label_container.count():
+            return None
+        
+        for level in [3, 4, 5]:
+            sibling = label_container.locator(f'xpath=./ancestor::div[{level}]/following-sibling::*[1]')
+            if not sibling.count():
+                continue
+            sibling_options = sibling.locator('li[data-asin]:visible')
 
+            options_count = sibling_options.count()
+            if options_count > 0:
+                return sibling_options
 
-def _get_variant_value(page, variant_type):
-    """Gets selected value by analyzing the active/selected state"""
-    section = _find_variant_section(page, variant_type)
-    if not section:
+        print('could not find any valid varaint options for ', variant_type)
+        
         return None
-
-    # Look for common selected state patterns
-    selected_patterns = [
-        '[class*="selected"]',  # CSS class
-        '[aria-selected="true"]',  # ARIA attribute
-        '[data-selected]',  # Data attribute
-        '.active',  # Common active class
-        '.is-selected'  # Common selected class
-    ]
     
-    for pattern in selected_patterns:
-        selected = section.locator(pattern)
-        if selected.count() > 0:
-            return selected.first.inner_text().strip()
-    
-    # Fallback: First visible option if no selection indicators found
-    return section.locator('li,button,div').first.inner_text().strip()
-
+    except Exception as e:
+        print(f'Error fetching variant options: {e}')
+        return None
 
 def _get_variant_options(page: Page, variant_type: str) -> Optional[Locator]:
     """
@@ -55,39 +55,140 @@ def _get_variant_options(page: Page, variant_type: str) -> Optional[Locator]:
         variant_type: The type of variant to look for ("Color", "Size", "Style").
     
     Returns:
-        List of ElementHandle objects representing the variant options, or None.
+        Locator object representing the variant options, or None.
     """
     try:
-        # Screenshot for debugging
-        # page.screenshot(path='screenshot.png', full_page=True)
-        section = page.locator(f'//*[contains(text(), "{variant_type}:")]/ancestor::div[4]')
-        if not section.count():
-            print(f'No section found for variant type: {variant_type}')
+        label_container = page.locator(f'//*[contains(text(), "{variant_type}:")]')
+        if not label_container.count():
+            print(f'could not find any variant options for {variant_type}')
             return None
+
+        for i in [3, 4, 2]:
+            # section = page.locator(f'//*[contains(text(), "{variant_type}:")]/ancestor::div[{i}]')
+            section = label_container.locator(f'xpath=ancestor::div[{i}]')
+            
+            if not section.count():
+                continue
+
+            # Correct options must have data-asin
+            options = section.locator('li[data-asin]:visible')
+
+            opt_count = options.count()
+            if opt_count > 0:
+                return options
+
+        print('could not find any valid varaint options for ', variant_type)
         
-        # Filter only visible, clickable list items
-        options = section.locator('li, button, div[role="button"]')
-
-        if not options.count():
-            print(f"No visible options found for {variant_type}")
-            return None
-
-        return options
+        return None
         
     except Exception as e:
         print(f'Error fetching variant options: {e}')
         return None
 
 # Value getters
-def get_color_value(page: Page) -> Optional[str]:
-    return _get_variant_value(page, "Color")
+def get_color_value(section: Locator) -> Optional[str]:
+    img = section.locator('img')
+    if img.count() > 0:
+        return img.first.get_attribute('alt') or img.first.get_attribute('title')
+    return None
 
-def get_size_value(page: Page) -> Optional[str]:
-    return _get_variant_value(page, "Size")
+def get_option_value(section: Locator) -> Optional[str]:
+    try:
+        return section.inner_text().strip()
+    except:
+        return None
 
-def get_style_value(page: Page) -> Optional[str]:
-    return _get_variant_value(page, "Style")
+def get_variant_types(page: Page) -> List[str]:
+    """
+    Extracts variant types like 'Size', 'Style', etc., by looking for label spans
+    and checking if nearby li[data-asin] elements exist.
+    """
+    try:
+        labels = page.locator('span:has-text(":")')
+        variant_types = set()
 
+        for label_el in labels.all():
+            #label_el = labels.nth(i)
+            label_text = label_el.inner_text().strip()
+
+            if ":" not in label_text:
+                continue
+
+            variant = label_text.split(":")[0].strip()
+            if not variant or variant.count(' ') >= 2:
+                continue
+            
+            # Check if there's a nearby UL/LI with data-asin
+            # Strategy: look at the grandparent
+
+            li_locator = label_el.locator('''
+                xpath=.//ancestor::div[position()<=5]//li[@data-asin][1]
+            ''')
+            if li_locator.count() > 0:
+                variant_types.add(variant)
+
+
+        return list(dict.fromkeys(variant_types))
+    except Exception as e:
+        print(f"Error extracting filtered variant types: {e}")
+        return []
+
+
+def _get_all_combinitions(page : Page) -> Dict[str, List[str | None]]:
+    '''
+    Gets all variant possibilities for the product.
+    e.g:
+    {
+        "Color" : ['red', 'black', 'white'],
+        "Style" : ['wired', 'wireless],
+        "Pattern" : ['headset', 'headset + keyboard']
+    }
+    Returns:
+        Dict[str, List[str | None]]: Dictionary with variant types as keys and lists of options as values.
+    '''
+    try:
+        keys = get_variant_types(page=page)
+        if not keys:
+            return {}
+        
+        combinitions : Dict[str, List[str | None]] = {k : [] for k in keys}
+        
+        for key in keys:
+            #options = _get_variant_options(page=page, variant_type=key)
+            options = _get_sibling_options(page=page, variant_type=key)
+            if not options:
+                continue
+            
+            opt_count = options.count()
+            if opt_count == 0:
+                continue
+            
+            for i in range(opt_count):
+                option = options.nth(i)
+                if key == 'Color':
+                    combinitions['Color'].append(get_color_value(option))
+                else:
+                    combinitions[key].append(get_option_value(option))
+        return combinitions
+    except Exception as e:
+        print(f'failed getting possibilities:\n{e}')
+        return {}
+
+
+
+def locator_to_tag(locator):
+    """Convert a Playwright locator to a BeautifulSoup Tag object."""
+    # Get the HTML content of the element
+    html = locator.inner_html()
+    
+    # Parse with BeautifulSoup and get the first element
+    soup = BeautifulSoup(html, 'html.parser')
+    tag = soup.find()  # the first tag in the HTML
+
+    if not isinstance(tag, Tag):
+        raise ValueError("No valid Tag element found in the locator's HTML")
+    
+    return tag
 
 def extract_data(
         page : Page
@@ -102,38 +203,108 @@ def extract_data(
             Example: {"title": "Product Title", "price": "$26.49", "image_url": "http://example.com/image.jpg"}
     """
 
-    results = []
-    for variant_type in ["Color", "Size", "Style"]:
-        options = _get_variant_options(page, variant_type)
-        if not options:
-            continue
+    '''
+    1. get all possibilities
+    {
+        "Color" : ['red', 'black', 'white'],
+        "Style" : ['wired', 'wireless],
+        "Pattern" : ['headset', 'headset + keyboard']
+    }
+    2. get nth possibility
+    3. select nth possibility
+    4. extract price
+    5. end
+    '''
+
+    combinitions = _get_all_combinitions(page)
+    if not combinitions:
+        return []
+    
+    combinitions_list = list(combinitions.values())
+    keys_list = list(combinitions.keys())
+    
+    possibilities = product(*combinitions_list)
+    
+    # Generate a list of lists for possibilities.
+    # we do this because we want to have access to
+    # each possibility at a time so we can extract
+    # prices after we have clicked on the options
+    # of each of the variant types in the possibility.
+    variant_types_list : List[List[Dict[str, str]]] = []
+    
+    for possib in possibilities:
+        possib_list : List[Dict[str, str]] = []
+        for i, type in enumerate(list(possib)):
+            temp_dict = {}
+            temp_dict[keys_list[i]] = type
+            possib_list.append(temp_dict)
         
-        options_count = options.count()
-        if options_count == 0:
-            print(f"No options found for {variant_type}")
-            continue
-        for i in range(options_count):
-            option = options.nth(i)
-            print(option.inner_text())
+        variant_types_list.append(possib_list)
+
+    variant_types_count = len(variant_types_list)
+    # print(variant_types_list)
+    
+    # Now we go through the options inside
+    # the each sublist and selelct the each
+    # option. at the end of each sublist ,
+    # we get the price.
+    all_variants_list = []
+    no_price = 0
+    for variant_sublist in variant_types_list:
+        this_variant_options = {}
+        get_price_from = None
+        for variant_option in variant_sublist:
+            (key, val), = variant_option.items()
+            this_variant_options[key] = val
+            options : Locator | None = _get_sibling_options(page=page, variant_type=key)
+            if options:
+                for option in options.all():
+                    if key.lower() == 'color':
+                        color_value = get_color_value(option)
+                        if color_value:
+                            if color_value.lower() == val.lower():
+                                try:
+                                    option.scroll_into_view_if_needed()
+                                    option.click(force=True)
+                                    page.wait_for_timeout(500)
+                                    page.screenshot(path='after-click.png')
+                                    get_price_from = option
+                                    break
+                                except Exception as e:
+                                    print(f'click failed for {key} : {val}\n {e}')
+                                    break
+                    else:
+                        option_value = get_option_value(option)
+                        if option_value:
+                            if option_value.lower() == val.lower():
+                                try:
+                                    option.scroll_into_view_if_needed()
+                                    option.click(force=True)
+                                    page.wait_for_timeout(500)
+                                    break
+                                except Exception as e:
+                                    print(f'click failed for {key} : {val}\n {e}')
+                                    break
+            else:
+                print('no options found for ', key)
             
-            option.scroll_into_view_if_needed()
-            page.wait_for_timeout(random.randint(100, 500))  # Random delay to simulate human interaction
-            
-            page.screenshot(path='pre-hover-screenshot.png', full_page=True)
-            option.hover()
-            page.screenshot(path='post-hover-screenshot.png', full_page=True)
-            page.wait_for_timeout(random.randint(200, 500))
 
-            results.append(
-                {
-                    "color": get_color_value(page),
-                    "size": get_size_value(page),
-                    "style": get_style_value(page)
-                }
-            )
+        option_tag = locator_to_tag(get_price_from)
+        
+        price = parse.find_price(option_tag)
+        if not price:
+            no_price += 1
+        
+        if no_price >= variant_types_count:
+            print(f'{no_price} products had no price, returning...')
+            print()
+            return []
+        
+        this_variant_options['price'] = price
+        all_variants_list.append(this_variant_options)
 
+    return all_variants_list
 
-    return results
 
     
 def get_variants(
