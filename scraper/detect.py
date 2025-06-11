@@ -206,5 +206,10 @@ class ProductCardDetector:
                                         continue
                         
                                 product_cards.append(data)
+
+                                # Test with 10
+                                if len(product_cards) >= 10:
+                                    print('length 10 reached')
+                                    return product_cards
         
         return product_cards

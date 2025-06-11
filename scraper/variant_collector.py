@@ -104,7 +104,8 @@ def get_variant_types(page: Page) -> List[str]:
     and checking if nearby li[data-asin] elements exist.
     """
     try:
-        labels = page.locator('span:has-text(":")')
+        #labels = page.locator('span:has-text(":")')
+        labels = page.locator('div[class]:has-text("feature") span:has-text(":")')
         variant_types = set()
 
         for label_el in labels.all():
@@ -121,10 +122,11 @@ def get_variant_types(page: Page) -> List[str]:
             # Check if there's a nearby UL/LI with data-asin
             # Strategy: look at the grandparent
 
-            li_locator = label_el.locator('''
-                xpath=.//ancestor::div[position()<=5]//li[@data-asin][1]
-            ''')
-            if li_locator.count() > 0:
+            # li_locator = label_el.locator('''
+            #     xpath=.//ancestor::div[position()<=5]//li[@data-asin][1]
+            # ''')
+            li_locator = _get_sibling_options(page=page, variant_type=variant)
+            if li_locator and li_locator.count() > 0:
                 variant_types.add(variant)
 
 
@@ -250,6 +252,7 @@ def extract_data(
     # we get the price.
     all_variants_list = []
     no_price = 0
+    # idx = 0
     for variant_sublist in variant_types_list:
         this_variant_options = {}
         get_price_from = None
@@ -267,7 +270,7 @@ def extract_data(
                                     option.scroll_into_view_if_needed()
                                     option.click(force=True)
                                     page.wait_for_timeout(500)
-                                    page.screenshot(path='after-click.png')
+                                    # page.screenshot(path=f'after-click-{idx}.png')
                                     get_price_from = option
                                     break
                                 except Exception as e:
@@ -296,12 +299,14 @@ def extract_data(
             no_price += 1
         
         if no_price >= variant_types_count:
-            print(f'{no_price} products had no price, returning...')
+            print(f'{no_price} variants had no price, returning...')
             print()
             return []
         
         this_variant_options['price'] = price
         all_variants_list.append(this_variant_options)
+
+        # idx += 1
 
     return all_variants_list
 
@@ -361,7 +366,7 @@ def get_variants(
                 Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
             """)
 
-            print(f"Getting variants for: {product_page}")
+            print(f"Getting variants for: {product_page}\n")
             page.goto(product_page, timeout=60000, wait_until='domcontentloaded')  # 60s timeout
 
             return callback(page)
