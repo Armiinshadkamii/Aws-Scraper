@@ -1,13 +1,5 @@
 [
     {
-        "asin": "B086PKMZ21",
-        "title": "Razer BlackShark V2 X Gaming Headset: 7.1 Surround Sound - 50mm Drivers - Memory Foam Cushion - For PC, PS4, PS5, Switch - 3.5mm Audio Jack - Black",
-        "price": "$37.61",
-        "link": "https://www.amazon.com/dp/B086PKMZ21/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
-        "_needs_fallback": false
-    },
-    {
         "asin": "B0BS1PRC4L",
         "title": "Sony WH-CH520 Wireless Headphones Bluetooth On-Ear Headset with Microphone, Black New",
         "price": "$30.72",
@@ -16,10 +8,10 @@
         "_needs_fallback": false
     },
     {
-        "asin": "B0C5RGLNW9",
-        "title": "FC100 Gaming Headset with Microphone for PS4, PS5, Switch, Xbox, PC, Mac, Gamer Headset with RGB Light, Computer Headphones with Mic",
-        "price": "$15.44",
-        "link": "https://www.amazon.com/dp/B0C5RGLNW9/?tag=generic&language=en_US",
+        "asin": "B086PKMZ21",
+        "title": "Razer BlackShark V2 X Gaming Headset: 7.1 Surround Sound - 50mm Drivers - Memory Foam Cushion - For PC, PS4, PS5, Switch - 3.5mm Audio Jack - Black",
+        "price": "$37.61",
+        "link": "https://www.amazon.com/dp/B086PKMZ21/?tag=generic&language=en_US",
         "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
         "_needs_fallback": false
     },
@@ -32,27 +24,43 @@
         "_needs_fallback": false
     },
     {
+        "asin": "B0BR5H276G",
+        "title": "FC100 Gaming Headset with Microphone for PS4, PS5, Switch, Xbox, PC, Mac, Gamer Headset with RGB Light, Computer Headphones with Mic",
+        "price": "$16.87",
+        "link": "https://www.amazon.com/dp/B0BR5H276G/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
+        "_needs_fallback": false
+    },
+    {
         "asin": "B0BCFKG49M",
         "title": "HyperX Cloud Stinger 2 Core \u2013 PC Gaming Headset, Lightweight Over-Ear Headset with mic, Swivel-to-Mute mic Function, DTS Headphone:X Spatial Audio, 40mm Drivers,Black",
         "price": "$23.91",
         "link": "https://www.amazon.com/dp/B0BCFKG49M/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/71WXVepOnFL._AC_SX425_.jpg",
+        "image": "https://m.media-amazon.com/images/I/71WXVepOnFL._AC_UF894,1000_QL80_FMwebp_DpWeblab_.jpg",
         "_needs_fallback": false
     },
     {
         "asin": "B0BLSB9BZD",
         "title": "EH05-U Wired USB Headset with Noise Cancelling Microphone for PC Laptop - Headphones with In-Line Control, Lightweight, Enhanced Sound & MIC Mute",
-        "price": "$22.75",
+        "price": "$21.44",
         "link": "https://www.amazon.com/dp/B0BLSB9BZD/?tag=generic&language=en_US",
         "image": "https://m.media-amazon.com/images/I/61wdUhoJZeL._AC_SX425_.jpg",
         "_needs_fallback": false
     },
     {
-        "asin": "B0C3BV19Q3",
-        "title": "HyperX Cloud III \u2013 Wired Gaming Headset, PC, PS5, Xbox Series X|S, Angled 53mm Drivers, DTS Spatial Audio, Memory Foam, Durable Frame, Ultra-Clear 10mm Mic, USB-C, USB-A, 3.5mm \u2013 Black/Red",
-        "price": "$54.94",
-        "link": "https://www.amazon.com/dp/B0C3BV19Q3/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/71pz2njkNRL._AC_SX425_.jpg",
+        "asin": "B0D6QBHSVH",
+        "title": "Wireless Gaming Headsets for PC, PS5, PS4, Switch, Mac, 2.4GHz Wireless Gaming Headphone with ENC Noise Canceling Microphone, Bluetooth 5.4, Cool Lighting, 50H Battery, 50mm Drivers",
+        "price": "$20.56",
+        "link": "https://www.amazon.com/dp/B0D6QBHSVH/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
+        "_needs_fallback": false
+    },
+    {
+        "asin": "B0B8Q4CR52",
+        "title": "SteelSeries Arctis Nova 1 Multi-System Gaming Headset \u2014 Hi-Fi Drivers \u2014 360\u00b0 Spatial Audio \u2014 Comfort Design \u2014 Durable \u2014 Ultra Lightweight \u2014 Noise-Cancelling Mic \u2014 PC, PS5/PS4, Switch, Xbox - Black",
+        "price": "$31.96",
+        "link": "https://www.amazon.com/dp/B0B8Q4CR52/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/71pY4rbIg0L._AC_SX425_.jpg",
         "_needs_fallback": false
     },
     {
@@ -60,23 +68,15 @@
         "title": "Turtle Beach Recon 50 Xbox Gaming Headset - Xbox Series X, Xbox Series S, Xbox One, PS5, PS4, PlayStation, Mobile & PC with 3.5mm - Removable Mic, 40mm Speakers",
         "price": "$15.48",
         "link": "https://www.amazon.com/dp/B00YXO5U40/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/71laLBjzd8L._AC_UF894,1000_QL80_FMwebp_DpWeblab_.jpg",
+        "image": "https://m.media-amazon.com/images/I/71laLBjzd8L._AC_UF894,1000_QL80_FMwebp_.jpg",
         "_needs_fallback": false
     },
     {
-        "asin": "B0B1SXW7LB",
-        "title": "Sony INZONE H3 Wired Gaming Headphones With Mic, PS5 Headphones, Over-Ear, Personalized 360 Spatial Sound, Discord Certified MDR-G300 (White)",
-        "price": "$45.79",
-        "link": "https://www.amazon.com/dp/B0B1SXW7LB/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/61NT0HLxyOL._AC_SX425_.jpg",
-        "_needs_fallback": false
-    },
-    {
-        "asin": "B098JGRWFX",
-        "title": "Logitech G Astro A10 Gen 2 Cross-Platform Wired Gaming Headset for PlayStation 5/4, Xbox S|X, Nintendo Switch, PC: 3.5mm Headphone Jack, 32mm Drivers, Flip-to-Mute Mic, Over-Ear - Grey",
-        "price": "$21.19",
-        "link": "https://www.amazon.com/dp/B098JGRWFX/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/61gC6PBsRPL._AC_UF894,1000_QL80_FMwebp_.jpg",
+        "asin": "B01N6ZJH96",
+        "title": "OneOdio Wired Over Ear Headphones Hi-Res Studio Monitor & Mixing DJ Stereo Headsets with 50mm Drivers and 1/4 to 3.5mm Jack for AMP Computer Recording Podcast Keyboard Guitar Laptop - Black",
+        "price": "$26.48",
+        "link": "https://www.amazon.com/dp/B01N6ZJH96/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/71MzTsi7UjL._AC_SX425_.jpg",
         "_needs_fallback": false
     }
 ]

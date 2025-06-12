@@ -6,7 +6,6 @@ their variants to a json file.
 
 from scraper.fetch_page import get_playwright_html
 from scraper.detect import ProductCardDetector
-from scraper.parse import extract_query_keywords
 from scraper.variant_collector import get_variants, extract_data
 
 from bs4 import BeautifulSoup
@@ -15,17 +14,11 @@ import json
 import glob
 from collections import Counter
 
-
-# url = "https://www.amazon.com/s?k=python+programming&language=en_US"
-# url = "https://www.amazon.com/Notebooks-Laptop-Computers/b?ie=UTF8&node=565108"
-# url = "https://www.amazon.com/Headphones-Headsets/s?k=Headphones+and+Headsets"
-
-
 def get_vars(
     product_page : str
 ) -> List[Dict[str, Optional[str]]]:
     '''
-    Gets variants for the specific product page.
+    Gets variants for the specified product page.
     '''
     variants = get_variants(
         product_page,
@@ -38,8 +31,15 @@ def get_product_variants(
         page_url, ret=3
         ) -> List[Dict[str, Optional[str]]]:
     try:
-        # B0DP3GBGCF
-        # B086PKMZ21
+        """
+        Wraps Retry logic around the get_vars function.
+        Args:
+            page_url: The URL of the product page to extract variants from.
+            ret: Number of retries in case of failure.
+        Returns:
+            A list of variants, where each variant is a dictionary
+            with keys as variant attributes and values as their respective values.
+        """
         variants : List[Dict[str, str | None]] = []
         # Retry logic
         for i in range(ret):
@@ -63,6 +63,11 @@ def attach_variants(
         final_products : List[
         Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]]]
         ):
+    """
+    Attaches variants to each product in the final list of products.
+    Args:
+        final_products : The final list of scraped products.
+    """
     # Get variants
     for product in final_products:
         try:
@@ -80,15 +85,14 @@ def save(
         final_products_with_variants: List[
         Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]]]
         ):
-    print('saving data ...')
-    print()
+    """Saves the final products with variants to a json file."""
     
+    print('saving data ...\n')
     try:
         with open('outputs/final.json', 'w') as f:
             json.dump(final_products_with_variants, f, indent=4)
         
-        print('file saved.')
-        print()
+        print('file saved.\n')
     
     except Exception as e:
         print('save failed')
@@ -98,10 +102,18 @@ def save(
 def run_scraper(
         pass_num: int,
         url: str):
+    """
+    Scraping engine. it scrapes products and saves them
+    to a run*.json file.
+    Args:
+        pass_num: The number of the current pass which will
+        be used to save the run*.json file.
+        url: The URL of the page to scrape.
+    """
     html: str = get_playwright_html(url=url)
     soup = BeautifulSoup(html, features="html.parser")
 
-    detector = ProductCardDetector(extract_query_keywords(url=url), soup)
+    detector = ProductCardDetector(soup)
     products: List[
         Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]]] = detector.get_all_product_cards()
 
@@ -110,7 +122,6 @@ def run_scraper(
         json.dump(products, f, indent=4)
 
     print(f"Found {len(products)} products.")
-
 
 def generate_stats(
         all_runs_asins: List[List[str]],
@@ -190,11 +201,7 @@ def generate_stats(
     return stats_dict["seen_everytime_asins_list"]
 
 def main():
-
-    # vari = get_product_variants('https://www.amazon.com/dp/B0BS1PRC4L/?tag=generic&language=en_US')
-
-    print("Starting Amazon Scraper...")
-    print()
+    print("Starting Amazon Scraper...\n")
 
     url = "https://www.amazon.com/Headphones-Headsets/s?k=Headphones+and+Headsets"
     num_passes = 2
@@ -204,13 +211,11 @@ def main():
         print()
         run_scraper(i, url)
 
-    print(f'{num_passes} passes completed. gathering stats...')
-    print()
+    print(f'{num_passes} passes completed. gathering stats...\n')
     
     all_runs_asins: List[List[str]] = []
     seen_asins = set()
-    #all_products: List[Dict[str, Union[Optional[str], bool]]] = []
-    # all_products: list[dict[str, (str | None) | bool]]
+
     all_unique_products : List[
         Dict[str, Union[bool, Optional[str], List[Dict[str, Optional[str]]]]]] = []
 
@@ -238,7 +243,7 @@ def main():
             if product['asin'] in seen_everytime_asins:
                 final_products_list.append(product)
 
-        # attach variants
+        # attach variants Only to stable products (seen in each pass)
         if final_products_list:
             attach_variants(final_products=final_products_list)
             print('variants attached')

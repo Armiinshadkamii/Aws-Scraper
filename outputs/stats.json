@@ -1,24 +1,21 @@
 {
-    "unique_asins": 12,
+    "unique_asins": 10,
     "avg_asins": 10.0,
     "max_asins": 10,
     "min_asins": 10,
-    "asins_seen_once": 4,
-    "asins_seen_everytime": 8,
-    "seen_once_asins_list": [
-        "B0BR5H276G",
-        "B0BRQR55FK",
-        "B0C5RGLNW9",
-        "B0C3BV19Q3"
-    ],
+    "asins_seen_once": 0,
+    "asins_seen_everytime": 10,
+    "seen_once_asins_list": [],
     "seen_everytime_asins_list": [
         "B0BS1PRC4L",
-        "B00YJJB7YG",
         "B086PKMZ21",
-        "B0BLSB9BZD",
+        "B00YJJB7YG",
+        "B0BR5H276G",
         "B0BCFKG49M",
-        "B098JGRWFX",
-        "B0B1SXW7LB",
-        "B00YXO5U40"
+        "B0BLSB9BZD",
+        "B0D6QBHSVH",
+        "B0B8Q4CR52",
+        "B00YXO5U40",
+        "B01N6ZJH96"
     ]
 }

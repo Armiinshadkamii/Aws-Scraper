@@ -4,41 +4,7 @@
         "title": "Sony WH-CH520 Wireless Headphones Bluetooth On-Ear Headset with Microphone, Black New",
         "price": "$30.72",
         "link": "https://www.amazon.com/dp/B0BS1PRC4L/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
-        "_needs_fallback": false,
-        "variants": [
-            {
-                "Color": "Black",
-                "price": null
-            },
-            {
-                "Color": "Blue",
-                "price": null
-            },
-            {
-                "Color": "Cappuccino",
-                "price": "$32.68"
-            },
-            {
-                "Color": "Pink",
-                "price": "$35.32"
-            },
-            {
-                "Color": "White",
-                "price": "$32.15"
-            },
-            {
-                "Color": "Yellow",
-                "price": "$55.68"
-            }
-        ]
-    },
-    {
-        "asin": "B00YJJB7YG",
-        "title": "Logitech H111 Wired Headset, Stereo Headphones with Noise-Cancelling Microphone, 3.5 mm Audio Jack, PC/Mac/Laptop/Smartphone/Tablet - Black",
-        "price": "$7.97",
-        "link": "https://www.amazon.com/dp/B00YJJB7YG/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "image": "https://m.media-amazon.com/images/I/41lArSiD5hL._AC_SX425_.jpg",
         "_needs_fallback": false,
         "variants": []
     },
@@ -47,248 +13,369 @@
         "title": "Razer BlackShark V2 X Gaming Headset: 7.1 Surround Sound - 50mm Drivers - Memory Foam Cushion - For PC, PS4, PS5, Switch - 3.5mm Audio Jack - Black",
         "price": "$37.61",
         "link": "https://www.amazon.com/dp/B086PKMZ21/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
         "_needs_fallback": false,
         "variants": [
             {
-                "Color": "Black",
-                "Style": "PC Headset",
                 "Size": "3.5 mm",
+                "Style": "PC Headset",
+                "Color": "Black",
                 "price": "$37.61"
             },
             {
-                "Color": "Black",
+                "Size": "3.5 mm",
                 "Style": "PC Headset",
-                "Size": "USB",
-                "price": "$44.53"
-            },
-            {
-                "Color": "Black",
-                "Style": "Xbox Headset",
-                "Size": "3.5 mm",
-                "price": "$41.86"
-            },
-            {
-                "Color": "Black",
-                "Style": "Xbox Headset",
-                "Size": "USB",
-                "price": "$44.53"
-            },
-            {
-                "Color": "Black",
-                "Style": "PlayStation Headset",
-                "Size": "3.5 mm",
-                "price": "$32.56"
-            },
-            {
-                "Color": "Black",
-                "Style": "PlayStation Headset",
-                "Size": "USB",
-                "price": "$44.53"
-            },
-            {
                 "Color": "Green",
-                "Style": "PC Headset",
-                "Size": "3.5 mm",
                 "price": "$40.91"
             },
             {
-                "Color": "Green",
+                "Size": "3.5 mm",
                 "Style": "PC Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
-                "Color": "Green",
-                "Style": "Xbox Headset",
-                "Size": "3.5 mm",
-                "price": null
-            },
-            {
-                "Color": "Green",
-                "Style": "Xbox Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
-                "Color": "Green",
-                "Style": "PlayStation Headset",
-                "Size": "3.5 mm",
-                "price": null
-            },
-            {
-                "Color": "Green",
-                "Style": "PlayStation Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
                 "Color": "Quartz Pink",
+                "price": "$36.13"
+            },
+            {
+                "Size": "3.5 mm",
                 "Style": "PC Headset",
+                "Color": "White",
+                "price": "$40.25"
+            },
+            {
                 "Size": "3.5 mm",
-                "price": "$36.16"
-            },
-            {
-                "Color": "Quartz Pink",
-                "Style": "PC Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
-                "Color": "Quartz Pink",
                 "Style": "Xbox Headset",
+                "Color": "Black",
+                "price": "$41.86"
+            },
+            {
                 "Size": "3.5 mm",
+                "Style": "Xbox Headset",
+                "Color": "Green",
+                "price": "$40.91"
+            },
+            {
+                "Size": "3.5 mm",
+                "Style": "Xbox Headset",
+                "Color": "Quartz Pink",
                 "price": "$45.69"
             },
             {
-                "Color": "Quartz Pink",
+                "Size": "3.5 mm",
                 "Style": "Xbox Headset",
-                "Size": "USB",
-                "price": null
+                "Color": "White",
+                "price": "$40.11"
             },
             {
+                "Size": "3.5 mm",
+                "Style": "PlayStation Headset",
+                "Color": "Black",
+                "price": "$32.24"
+            },
+            {
+                "Size": "3.5 mm",
+                "Style": "PlayStation Headset",
+                "Color": "Green",
+                "price": "$40.91"
+            },
+            {
+                "Size": "3.5 mm",
+                "Style": "PlayStation Headset",
                 "Color": "Quartz Pink",
+                "price": "$47.86"
+            },
+            {
+                "Size": "3.5 mm",
                 "Style": "PlayStation Headset",
-                "Size": "3.5 mm",
-                "price": "$47.88"
-            },
-            {
-                "Color": "Quartz Pink",
-                "Style": "PlayStation Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
                 "Color": "White",
-                "Style": "PC Headset",
-                "Size": "3.5 mm",
-                "price": "$41.77"
-            },
-            {
-                "Color": "White",
-                "Style": "PC Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
-                "Color": "White",
-                "Style": "Xbox Headset",
-                "Size": "3.5 mm",
-                "price": "$40.12"
-            },
-            {
-                "Color": "White",
-                "Style": "Xbox Headset",
-                "Size": "USB",
-                "price": null
-            },
-            {
-                "Color": "White",
-                "Style": "PlayStation Headset",
-                "Size": "3.5 mm",
                 "price": "$47.97"
             },
             {
-                "Color": "White",
-                "Style": "PlayStation Headset",
                 "Size": "USB",
-                "price": null
+                "Style": "PC Headset",
+                "Color": "Black",
+                "price": "$44.53"
+            },
+            {
+                "Size": "USB",
+                "Style": "PC Headset",
+                "Color": "Green",
+                "price": "$40.91"
+            },
+            {
+                "Size": "USB",
+                "Style": "PC Headset",
+                "Color": "Quartz Pink",
+                "price": "$36.13"
+            },
+            {
+                "Size": "USB",
+                "Style": "PC Headset",
+                "Color": "White",
+                "price": "$40.25"
+            },
+            {
+                "Size": "USB",
+                "Style": "Xbox Headset",
+                "Color": "Black",
+                "price": "$41.86"
+            },
+            {
+                "Size": "USB",
+                "Style": "Xbox Headset",
+                "Color": "Green",
+                "price": "$40.91"
+            },
+            {
+                "Size": "USB",
+                "Style": "Xbox Headset",
+                "Color": "Quartz Pink",
+                "price": "$45.69"
+            },
+            {
+                "Size": "USB",
+                "Style": "Xbox Headset",
+                "Color": "White",
+                "price": "$40.11"
+            },
+            {
+                "Size": "USB",
+                "Style": "PlayStation Headset",
+                "Color": "Black",
+                "price": "$32.24"
+            },
+            {
+                "Size": "USB",
+                "Style": "PlayStation Headset",
+                "Color": "Green",
+                "price": "$40.91"
+            },
+            {
+                "Size": "USB",
+                "Style": "PlayStation Headset",
+                "Color": "Quartz Pink",
+                "price": "$47.86"
+            },
+            {
+                "Size": "USB",
+                "Style": "PlayStation Headset",
+                "Color": "White",
+                "price": "$47.97"
             }
         ]
     },
     {
-        "asin": "B0BLSB9BZD",
-        "title": "EH05-U Wired USB Headset with Noise Cancelling Microphone for PC Laptop - Headphones with In-Line Control, Lightweight, Enhanced Sound & MIC Mute",
-        "price": "$22.75",
-        "link": "https://www.amazon.com/dp/B0BLSB9BZD/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "asin": "B00YJJB7YG",
+        "title": "Logitech H111 Wired Headset, Stereo Headphones with Noise-Cancelling Microphone, 3.5 mm Audio Jack, PC/Mac/Laptop/Smartphone/Tablet - Black",
+        "price": "$7.97",
+        "link": "https://www.amazon.com/dp/B00YJJB7YG/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/61MZu4QvoRL._AC_SX425_.jpg",
         "_needs_fallback": false,
         "variants": []
+    },
+    {
+        "asin": "B0BR5H276G",
+        "title": "FC100 Gaming Headset with Microphone for PS4, PS5, Switch, Xbox, PC, Mac, Gamer Headset with RGB Light, Computer Headphones with Mic",
+        "price": "$16.87",
+        "link": "https://www.amazon.com/dp/B0BR5H276G/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
+        "_needs_fallback": false,
+        "variants": [
+            {
+                "Style": "Wired",
+                "Color": "BLACK",
+                "price": "$21.99"
+            },
+            {
+                "Style": "Wired",
+                "Color": "BLUE",
+                "price": "$15.44"
+            },
+            {
+                "Style": "Wired",
+                "Color": "Black",
+                "price": "$21.99"
+            },
+            {
+                "Style": "Wired",
+                "Color": "GREEN",
+                "price": "$16.87"
+            },
+            {
+                "Style": "Wired",
+                "Color": "RED",
+                "price": "$23.03"
+            },
+            {
+                "Style": "Wired",
+                "Color": "WHITE",
+                "price": "$16.89"
+            },
+            {
+                "Style": "Wired",
+                "Color": "black-blue",
+                "price": null
+            },
+            {
+                "Style": "Wired",
+                "Color": "black-green",
+                "price": "$22.18"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "BLACK",
+                "price": "$21.99"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "BLUE",
+                "price": "$15.44"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "Black",
+                "price": "$21.99"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "GREEN",
+                "price": "$16.87"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "RED",
+                "price": "$23.03"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "WHITE",
+                "price": "$16.89"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "black-blue",
+                "price": "$28.89"
+            },
+            {
+                "Style": "Wireless",
+                "Color": "black-green",
+                "price": "$22.18"
+            }
+        ]
     },
     {
         "asin": "B0BCFKG49M",
         "title": "HyperX Cloud Stinger 2 Core \u2013 PC Gaming Headset, Lightweight Over-Ear Headset with mic, Swivel-to-Mute mic Function, DTS Headphone:X Spatial Audio, 40mm Drivers,Black",
         "price": "$23.91",
         "link": "https://www.amazon.com/dp/B0BCFKG49M/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "image": "https://m.media-amazon.com/images/I/71WXVepOnFL._AC_SX425_.jpg",
         "_needs_fallback": false,
         "variants": []
     },
     {
-        "asin": "B098JGRWFX",
-        "title": "Logitech G Astro A10 Gen 2 Cross-Platform Wired Gaming Headset for PlayStation 5/4, Xbox S|X, Nintendo Switch, PC: 3.5mm Headphone Jack, 32mm Drivers, Flip-to-Mute Mic, Over-Ear - Grey",
-        "price": "$21.19",
-        "link": "https://www.amazon.com/dp/B098JGRWFX/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "asin": "B0BLSB9BZD",
+        "title": "EH05-U Wired USB Headset with Noise Cancelling Microphone for PC Laptop - Headphones with In-Line Control, Lightweight, Enhanced Sound & MIC Mute",
+        "price": "$21.44",
+        "link": "https://www.amazon.com/dp/B0BLSB9BZD/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/61wdUhoJZeL._AC_SX425_.jpg",
         "_needs_fallback": false,
         "variants": [
             {
-                "Color": "Black/PS Edition",
-                "price": "$21.59"
+                "Style": "3.5mm computer headset\n1 option from $19.99",
+                "Color": "Apricot",
+                "price": null
             },
             {
-                "Color": "Black/Xbox Edition",
-                "price": "$35.59"
+                "Style": "3.5mm computer headset\n1 option from $19.99",
+                "Color": "Black",
+                "price": null
             },
             {
-                "Color": "Grey",
-                "price": "$21.19"
+                "Style": "3.5mm computer headset\n1 option from $19.99",
+                "Color": "Pink",
+                "price": null
             },
             {
-                "Color": "Lilac",
-                "price": "$22.71"
+                "Style": "EH05(USB+3.5mm)\n1 option from $30.39",
+                "Color": "Apricot",
+                "price": null
             },
             {
-                "Color": "Mint",
-                "price": "$87.99"
+                "Style": "EH05(USB+3.5mm)\n1 option from $30.39",
+                "Color": "Black",
+                "price": null
             },
             {
-                "Color": "White/PS Edition",
-                "price": "$19.99"
+                "Style": "EH05(USB+3.5mm)\n1 option from $30.39",
+                "Color": "Pink",
+                "price": null
             },
             {
-                "Color": "White/Xbox Edition",
-                "price": "$17.42"
+                "Style": "3.5mm+usb single ear\n1 option from $24.69",
+                "Color": "Apricot",
+                "price": null
+            },
+            {
+                "Style": "3.5mm+usb single ear\n1 option from $24.69",
+                "Color": "Black",
+                "price": null
+            },
+            {
+                "Style": "3.5mm+usb single ear\n1 option from $24.69",
+                "Color": "Pink",
+                "price": null
+            },
+            {
+                "Style": "USB-A\n4 options from $21.44",
+                "Color": "Apricot",
+                "price": null
+            },
+            {
+                "Style": "USB-A\n4 options from $21.44",
+                "Color": "Black",
+                "price": null
+            },
+            {
+                "Style": "USB-A\n4 options from $21.44",
+                "Color": "Pink",
+                "price": "$24.52"
             }
         ]
     },
     {
-        "asin": "B0B1SXW7LB",
-        "title": "Sony INZONE H3 Wired Gaming Headphones With Mic, PS5 Headphones, Over-Ear, Personalized 360 Spatial Sound, Discord Certified MDR-G300 (White)",
-        "price": "$45.79",
-        "link": "https://www.amazon.com/dp/B0B1SXW7LB/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "asin": "B0D6QBHSVH",
+        "title": "Wireless Gaming Headsets for PC, PS5, PS4, Switch, Mac, 2.4GHz Wireless Gaming Headphone with ENC Noise Canceling Microphone, Bluetooth 5.4, Cool Lighting, 50H Battery, 50mm Drivers",
+        "price": "$20.56",
+        "link": "https://www.amazon.com/dp/B0D6QBHSVH/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/11++B3A2NEL._SS200_.png",
+        "_needs_fallback": false,
+        "variants": []
+    },
+    {
+        "asin": "B0B8Q4CR52",
+        "title": "SteelSeries Arctis Nova 1 Multi-System Gaming Headset \u2014 Hi-Fi Drivers \u2014 360\u00b0 Spatial Audio \u2014 Comfort Design \u2014 Durable \u2014 Ultra Lightweight \u2014 Noise-Cancelling Mic \u2014 PC, PS5/PS4, Switch, Xbox - Black",
+        "price": "$31.96",
+        "link": "https://www.amazon.com/dp/B0B8Q4CR52/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/71pY4rbIg0L._AC_SX425_.jpg",
         "_needs_fallback": false,
         "variants": [
             {
+                "Style": "Nova 1\n29 options from $31.96",
                 "Color": "Black",
-                "Style": "H3 Gaming Headset",
+                "price": "$31.96"
+            },
+            {
+                "Style": "Nova 1\n29 options from $31.96",
+                "Color": "White",
+                "price": "$40.66"
+            },
+            {
+                "Style": "Arctis 3\nCurrently unavailable.",
+                "Color": "Black",
                 "price": null
             },
             {
-                "Color": "Black",
-                "Style": "H5 Gaming Headset",
-                "price": "$92.00"
-            },
-            {
-                "Color": "Black",
-                "Style": "H9 Gaming Headset",
-                "price": "$160.90"
-            },
-            {
+                "Style": "Arctis 3\nCurrently unavailable.",
                 "Color": "White",
-                "Style": "H3 Gaming Headset",
-                "price": "$45.79"
-            },
-            {
-                "Color": "White",
-                "Style": "H5 Gaming Headset",
-                "price": "$106.38"
-            },
-            {
-                "Color": "White",
-                "Style": "H9 Gaming Headset",
-                "price": "$154.90"
+                "price": null
             }
         ]
     },
@@ -297,24 +384,66 @@
         "title": "Turtle Beach Recon 50 Xbox Gaming Headset - Xbox Series X, Xbox Series S, Xbox One, PS5, PS4, PlayStation, Mobile & PC with 3.5mm - Removable Mic, 40mm Speakers",
         "price": "$15.48",
         "link": "https://www.amazon.com/dp/B00YXO5U40/?tag=generic&language=en_US",
-        "image": "https://m.media-amazon.com/images/I/01rrzVoKd5L.svg",
+        "image": "https://m.media-amazon.com/images/I/71laLBjzd8L._AC_SX425_.jpg",
         "_needs_fallback": false,
         "variants": [
             {
                 "Color": "Black / Blue",
-                "price": null
+                "price": "$12.16"
             },
             {
                 "Color": "Black / Green",
-                "price": null
+                "price": "$15.48"
             },
             {
                 "Color": "Black / Red",
-                "price": null
+                "price": "$24.24"
             },
             {
                 "Color": "Red/Blue",
-                "price": "$37.97"
+                "price": "$21.18"
+            }
+        ]
+    },
+    {
+        "asin": "B01N6ZJH96",
+        "title": "OneOdio Wired Over Ear Headphones Hi-Res Studio Monitor & Mixing DJ Stereo Headsets with 50mm Drivers and 1/4 to 3.5mm Jack for AMP Computer Recording Podcast Keyboard Guitar Laptop - Black",
+        "price": "$26.48",
+        "link": "https://www.amazon.com/dp/B01N6ZJH96/?tag=generic&language=en_US",
+        "image": "https://m.media-amazon.com/images/I/71MzTsi7UjL._AC_SX425_.jpg",
+        "_needs_fallback": false,
+        "variants": [
+            {
+                "Color": "Black",
+                "price": "$26.48"
+            },
+            {
+                "Color": "Dark Blue",
+                "price": "$35.99"
+            },
+            {
+                "Color": "Grey",
+                "price": "$35.99"
+            },
+            {
+                "Color": "Light Blue",
+                "price": "$28.65"
+            },
+            {
+                "Color": "Pink",
+                "price": "$35.99"
+            },
+            {
+                "Color": "Red",
+                "price": "$15.99"
+            },
+            {
+                "Color": "Silver",
+                "price": "$35.99"
+            },
+            {
+                "Color": "Sky Blue",
+                "price": "$35.99"
             }
         ]
     }

@@ -5,20 +5,9 @@ a list of products.
 import re
 from bs4 import Tag, BeautifulSoup
 from typing import Dict, Optional, Union, List
-from urllib.parse import urlparse, parse_qs
 import time, random
 
 import scraper.fetch_page as fp
-
-
-def extract_query_keywords(url):
-    parsed = urlparse(url)
-    query_dict = parse_qs(parsed.query)
-    # "k" is Amazon's search parameter
-    keywords = query_dict.get("k", [""])[0]
-    
-    return keywords.lower().split()
-
 
 def find_price(tag : Tag) -> Optional[str]:
     '''

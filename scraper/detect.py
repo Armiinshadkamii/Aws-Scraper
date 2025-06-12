@@ -25,8 +25,7 @@ class ProductCardDetector:
     this way we arent relying on concrete css
     or html.
     '''
-    def __init__(self, url_keywords, soup):
-        self.keywords = url_keywords
+    def __init__(self, soup):
         self.soup : BeautifulSoup = soup
         self.grid_containers = self.soup.find_all(
             class_=lambda x: bool(x) and any(
