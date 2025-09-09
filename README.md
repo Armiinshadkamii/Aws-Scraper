@@ -14,7 +14,7 @@ This project is a modular scraper for Amazon product listings and variants. It u
 
 ## How It Works
 
-### Product Card Detection (`product_card_detector.py`)
+### Product Card Detection (`detect.py`)
 
 - **Core Idea:** Amazon pages vary widely in layout. Instead of relying on fixed CSS selectors, this module detects repetitive HTML structures within likely grid containers. These containers typically have class names like `"grid"`, `"results"`, `"items"`, `"products"`, or `"card"`.
 
